@@ -9,6 +9,6 @@ class TodoInput extends Component {
             </div>
         )
     }
-}
+}  
 
 export default TodoInput

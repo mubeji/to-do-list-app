@@ -5,7 +5,7 @@ class TodoItem extends Component {
     render() {
         return (
             <div>
-                TodoItem
+                <h4> TodoItem </h4> 
             </div>
         )
     }
