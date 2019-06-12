@@ -6,6 +6,7 @@ class TodoItem extends Component {
         return (
             <div>
                 <h4> TodoItem </h4> 
+                <h6>test</h6>
             </div>
         )
     }
