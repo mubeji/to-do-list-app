@@ -24,7 +24,7 @@ export default class TodoList extends Component {
                     className="btn btn-danger button block text-uppercaser mt-5"
                     onClick={clearList}
                 >
-                    clear list
+                    clear all
                 </button>
             </ul>
         )
