@@ -16,13 +16,20 @@ class TodoInput extends Component {
                             </div>
                         </div>
                         <input type="text" className="form-control text-capitalise" 
-                            placeholder="add todo item" value={item} onChange={handleChange}
+                            placeholder="add todo item" 
+                            value={item} 
+                            onChange={handleChange}
                         />
                     </div>
-                    <button type="submit" 
-                        className="btn btn-block btn-primary mt-3 text-uppercase"
+                    <button type="submit"  
+                        disabled={item ? false: true} /* disable the button if NO input */
+                        className={
+                             /* change button style if editItem is true */
+                            editItem ? "btn btn-block btn-success mt-3" 
+                            : "btn btn-block btn-primary mt-3 text-uppercase"
+                        }
                     >
-                        add item
+                        {editItem ? "edit item" : "add item"} {/* conditional render */}
                     </button>
                 </form>
             </div>

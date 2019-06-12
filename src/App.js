@@ -26,23 +26,36 @@ class App extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        this.setState({
-            itemsArr: [...this.state.itemsArr,  
-                { id:uuid(), title: this.state.item }
-            ],
-            item:'', //clear input
-            editItem: false,
-            id: this.state.id
-
-        })
+        //prevent submutting blank input
+        if (this.state.item.length>0) {
+            this.setState({
+                itemsArr: [...this.state.itemsArr,  
+                    { id:uuid(), title: this.state.item }
+                ],
+                item:'', //clear input
+                editItem: false
+            })
+        }
     }
 
     handleClearList = () => {
         console.log('handle clearing')
+        this.setState({
+            itemsArr: []
+        })
     }
 
-    handleEdit = (id) => {
+    handleEdit = (id, e) => {
         console.log(`handle Edit ${id}`)
+        const newArr = this.state.itemsArr.filter((item) => id !== item.id )
+        const selectedItem = this.state.itemsArr.find((item) => item.id === id)
+
+        this.setState({
+            itemsArr: newArr,
+            item: selectedItem.title,
+            id:id, //maintain the same id, to make sure we editing same item
+            editItem: true
+        })
         
     }
 
@@ -66,7 +79,7 @@ class App extends Component {
                             editItem={this.state.editItem}
                         />
                         <TodoList itemsArr={this.state.itemsArr}
-                            clearList={this.clearList}
+                            clearList={this.handleClearList}
                             handleDelete={this.handleDelete}
                             handleEdit={this.handleEdit}
                         />
