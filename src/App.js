@@ -10,18 +10,31 @@ import TodoList from './components/TodoList'
 class App extends Component {
 
     state={
-        itemsArr:[{id:1, title: 'wake up'}, {id:1, title: 'brush teeth'}],
-        id: uuid(),
+        itemsArr:[],
+        id: '',
         item: '',
         editItem: false
     }
 
     handleChange = (e) => {
-        console.log('handle chnage')
+        //console.log('handle chnage')
+        this.setState({
+            item: e.target.value
+        })
+
     }
 
     handleSubmit = (e) => {
-        console.log('handle submit')
+        e.preventDefault()
+        this.setState({
+            itemsArr: [...this.state.itemsArr,  
+                { id:uuid(), title: this.state.item }
+            ],
+            item:'', //clear input
+            editItem: false,
+            id: this.state.id
+
+        })
     }
 
     handleClearList = () => {
@@ -37,6 +50,7 @@ class App extends Component {
     }
 
     render() {
+        console.log(this.state)
         return (
             <div className="container">
                 <div className="row">

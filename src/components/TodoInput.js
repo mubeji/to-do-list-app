@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 
 class TodoInput extends Component {
     render() {
-        console.log(this.props)
+        //console.log(this.props)
         const { item, handleChange, handleSubmit, editItem } = this.props
 
         return (
